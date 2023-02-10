@@ -16,11 +16,13 @@ object SharedFunctions {
         sharedPref=activity.getPreferences(Context.MODE_PRIVATE)?: return
         with(sharedPref.edit()){
             putString(key,value)
+            apply()
             commit()
         }
     }
     fun getValueFromSharedPref(key: String): String? {
         val default=""
-        return sharedPref.getString(key,default)
+        val value=sharedPref.getString(key,default)
+        return value
     }
 }
